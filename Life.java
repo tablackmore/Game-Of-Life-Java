@@ -1,7 +1,7 @@
-class Life {
-	int dimension;
-	boolean[][] world;
-	long generation;
+public class Life {
+	private int dimension;
+	private boolean[][] world;
+	private long generation;
 	Life(int dimension){
 		this.dimension = dimension;
 		createNewWorld();
@@ -10,7 +10,7 @@ class Life {
 
 	// Contains the logic for the starting scenario.
 	// Which cells are alive or dead in generation 0.
-	void createNewWorld(){
+	private void createNewWorld(){
 		boolean[][] newWorld = new boolean[dimension][dimension];
 		for(int row = 0; row < newWorld.length; row++ ){
 			for(int col = 0; col < newWorld[row].length; col++ ){
@@ -21,7 +21,7 @@ class Life {
 	}
 
 	// Draws the world in the terminal.
-	void drawWorld(){
+	public void drawWorld(){
 		System.out.print("\033[H\033[2J"); // Simulates a clear screen on linux machines
 		for(int row = 0; row < world.length; row++ ){
 			for(int col = 0; col < world[row].length; col++ ){
@@ -34,7 +34,7 @@ class Life {
 	}
 
 	// Create the next generation
-	void nextGeneration(){
+	public void nextGeneration(){
 		boolean[][] newWorld = new boolean[dimension][dimension];
 		for(int row = 0; row < newWorld.length; row++ ){
 			for(int col = 0; col < newWorld[row].length; col++ ){
@@ -53,7 +53,7 @@ class Life {
 		Any live cell with two or three live neighbours lives, unchanged, to the next generation.
 		Any dead cell with exactly three live neighbours cells will come to life.
 	*/
-	boolean isAlive(int row, int col){
+	private boolean isAlive(int row, int col){
 		int liveCount = 0;
 		boolean cellCurrentlyAlive = world[row][col];
 
